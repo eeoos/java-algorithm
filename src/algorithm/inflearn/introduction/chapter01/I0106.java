@@ -2,32 +2,22 @@ package algorithm.inflearn.introduction.chapter01;
 
 import java.util.*;
 
-public class I0105 {
+public class I0106 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
-		String input = sc.nextLine();
-
-		List<Character> list = new ArrayList<>();
-		for(int i = input.length()-1; i>=0; i--) {
-			char c = input.charAt(i);
-			if(Character.isAlphabetic(c)) {
-				list.add(c);
-			}
-		}
-		
+		String input = sc.next();
 		StringBuilder sb = new StringBuilder();
-		int index = 0;
 		
 		for(int i = 0; i<input.length(); i++) {
+			String tmp = sb.toString();
 			char c = input.charAt(i);
-			if(Character.isAlphabetic(c)) {
-				sb.append(list.get(index++));
-			}else {
+			if(!tmp.contains(String.valueOf(c))) {
 				sb.append(c);
 			}
 		}
 		System.out.println(sb.toString());
+
 	}
+
 }
