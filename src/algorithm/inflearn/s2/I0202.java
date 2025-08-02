@@ -19,5 +19,4 @@ public class I0202 {
 		}
 		System.out.println(cnt);
 	}
-
 }
