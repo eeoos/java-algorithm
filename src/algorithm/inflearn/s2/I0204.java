@@ -20,5 +20,4 @@ public class I0204 {
 			System.out.print(i + " ");
 		}
 	}
-
 }
