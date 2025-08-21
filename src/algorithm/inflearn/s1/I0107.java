@@ -2,7 +2,7 @@ package algorithm.inflearn.s1;
 import java.util.*;
 
 public class I0107 {
-
+	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);

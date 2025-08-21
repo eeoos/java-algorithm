@@ -5,7 +5,7 @@ public class I0110 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+		 
 		String[] sa = sc.next().split("");
 		String s = sc.next();
 		List<Integer> il = new ArrayList<>();
