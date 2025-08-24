@@ -7,13 +7,16 @@ public class I0209 {
 		Scanner sc = new Scanner(System.in);
 		
 		int T = sc.nextInt();
+		sc.nextLine();
 		
 		int[][] ia = new int[T][T];
 		for(int i = 0; i<T; i++) {
 			for(int j = 0; j<T; j++) {
 				ia[i][j] = sc.nextInt();
 			}
+			sc.nextLine();
 		}
+		
 		int ld = 0;
 		int rd = 0;
 		int h = 0;
@@ -27,7 +30,7 @@ public class I0209 {
 				h += ia[i][j];
 				v += ia[j][i];
 			}
-			max = Math.max(h, v);
+			max = Math.max(max, Math.max(h, v));
 			h = 0;
 			v = 0;
 		}
