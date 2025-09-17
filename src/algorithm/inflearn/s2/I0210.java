@@ -26,12 +26,5 @@ public class I0210 {
 		}
 		
 		System.out.println(cnt);
-		for(int i = 0; i<ia.length; i++) {
-			for(int j = 0; j<ia.length; j++) {
-				System.out.print(ia[i][j]);
-			}
-			System.out.println();
-		}
 	}
-
 }
