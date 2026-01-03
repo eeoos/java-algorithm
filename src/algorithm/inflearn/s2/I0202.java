@@ -14,8 +14,9 @@ public class I0202 {
 			int b = sc.nextInt();
 			if(b>a) {
 				 cnt++;	 
+				 a = b;
 			}
-			a = (int)Math.max(a, b);
+//			a = (int)Math.max(a, b);
 		}
 		System.out.println(cnt);
 	}
