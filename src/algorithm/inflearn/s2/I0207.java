@@ -6,9 +6,7 @@ public class I0207 {
 		Scanner sc = new Scanner(System.in);
 			
 		int T = sc.nextInt();
-		sc.nextLine();
-		
-		boolean answer = false;
+
 		int score = 1;
 		int sum = 0;
 		
@@ -17,10 +15,8 @@ public class I0207 {
 			
 			if(input == 1) {
 				sum += score++;
-				answer = true;
 			}else {
 				score = 1;
-				answer = false;
 			}
 		}
 		System.out.println(sum);
