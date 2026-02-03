@@ -1,27 +1,22 @@
 package algorithm.inflearn.s3;
 
 import java.util.*;
-public class I0301 {
+public class I0301_2 {
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
+		
 		List<Integer> l = new ArrayList<>();
 		
 		int a = sc.nextInt();
-		int[] aArr = new int[a];
 		for(int i = 0; i<a; i++) {
-			aArr[i] = sc.nextInt();
+			l.add(sc.nextInt());
 		}
 		
 		int b = sc.nextInt();
-		
 		for(int i = 0; i<b; i++) {
-			int tmp = sc.nextInt();
-			
-			for(int k =0; k<a; k++) {
-					if(aArr[k] == tmp) l.add(aArr[k]);
-			}
+			l.add(sc.nextInt());
 		}
 		
 		Collections.sort(l);
