@@ -3,30 +3,41 @@ import java.io.*;
   
 public class Solution {
   public static void main(String[] args) throws IOException {
-	
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    char[] s = br.readLine().trim().toCharArray();
     
-	char[] ca = br.readLine().toCharArray();
-    Arrays.sort(ca);
-    int cnt = 0;
-    for(int i = 0; i<=s.length-ca.length; i++){
-      char[] tmp = new char[ca.length];
-      for(int j = i; j<i+ca.length; j++){
-        tmp[j] = s[j];
-      }
-      
-      boolean isA = false;
-      for(int j = 0; j<ca.length; j++){
-        if(tmp[j] != ca[j]) {
-          break;
-        }
-        isA = true;
-      }
-      
-      if(isA) cnt++;
-           
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ 	StringTokenizer st = new StringTokenizer(br.readLine());
+    
+    int N = Integer.parseInt(st.nextToken());
+    int K = Integer.parseInt(st.nextToken());
+    int[] arr = new int[N];
+   	int cnt = 0;
+	List<Integer> iarr = new ArrayList<>();
+    
+    st = new StringTokenizer(br.readLine());
+    for(int i = 0; i<N; i++){
+ 	  arr[i] = Integer.parseInt(st.nextToken());
     }
-    System.out.println(cnt);
+    
+    for(int i = 0; i<=N-K; i++){
+      int sum = 0;
+      for(int j = 0; j<3; j++){
+        sum += arr[i+j];
+      }
+      iarr.add(sum);
+    }
+    Collections.sort(iarr, Collections.reverseOrder());
+    System.out.println(iarr);
+    int tmp = 0;
+    for(int i = 0; i<iarr.size(); i++){
+      if(iarr.get(i) != tmp){
+        tmp = iarr.get(i);
+        cnt++;
+        if(cnt == K){
+          System.out.println(tmp);
+          return;
+        }
+      }
+    }
+    System.out.println(-1);
   }
 }
