@@ -3,7 +3,7 @@ package algorithm.inflearn.s3;
 import java.util.*;
 import java.io.*;
   
-public class I0303 {
+public class I0303_2 {
   public static void main(String[] args) throws IOException{
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = new StringTokenizer(br.readLine());
@@ -17,15 +17,17 @@ public class I0303 {
       arr[i] = Integer.parseInt(st.nextToken());
     }
     
-    int max = Integer.MIN_VALUE;    
-    for(int i = 0; i<N-K; i++){
-	  int sum = 0;
-      for(int j = i; j<i+K; j++){
-        sum+=  arr[j];
-      }
-      if(sum > max) max = sum;
-    }
     
+    int sum = 0;
+    for(int i = 0; i<K; i++) sum += arr[i];
+    int max = sum;
+    for(int i = K; i<N; i++) {
+      sum += (arr[i]-arr[i-K]);
+      if(sum > max){
+        max = sum;
+      }
+    }
+      
     System.out.println(max);
 
   }
