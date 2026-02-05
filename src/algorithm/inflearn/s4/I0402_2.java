@@ -16,7 +16,6 @@ public class I0402_2 {
     }
     
     for(char c : b){
-    
       if(m.get(c) == null || m.get(c) == 0){
         System.out.println("NO");
         return;

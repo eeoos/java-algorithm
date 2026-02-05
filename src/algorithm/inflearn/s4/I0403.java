@@ -1,9 +1,9 @@
-package algorithm.inflearn.s3;
+package algorithm.inflearn.s4;
 
 import java.util.*;
 import java.io.*;
   
-public class I0303 {
+public class I0403 {
   public static void main(String[] args) throws IOException {
     
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
