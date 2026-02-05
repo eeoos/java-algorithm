@@ -16,19 +16,14 @@ public class I0402_2 {
     }
     
     for(char c : b){
-      if(m.get(c) == null){
+    
+      if(m.get(c) == null || m.get(c) == 0){
         System.out.println("NO");
         return;
       }
-      m.put(c, m.get(c)-1);
+      m.put(c, m.get(c)-1);	
     }
     
-    for(Map.Entry<Character, Integer> c : m.entrySet()){
-		if(c.getValue() != 0){
-          System.out.println("NO");
-          return;
-        }
-    }
     System.out.println("YES");
   }
 }
