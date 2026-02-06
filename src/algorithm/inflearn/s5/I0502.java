@@ -13,7 +13,7 @@ public class I0502 {
     Deque<Character> dq = new ArrayDeque<>();
     for(char c : arr){
       if('(' == c){
-        dq.push(c);
+        dq.push(c);  
       } else if(')' == c){
         if(dq.isEmpty()){
           continue;
