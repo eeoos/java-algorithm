@@ -16,7 +16,10 @@ public class I0507 {
     }
     
     String result = "";
-    result = s.equals(sb.toString()) ? "YES" : "NO";
+    
+    result = s.startsWith(sb.toString()) ? "YES" : "NO";
     System.out.println(result);
+    
+    
   }
 }
