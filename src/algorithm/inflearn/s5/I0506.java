@@ -1,7 +1,9 @@
+package algorithm.inflearn.s5;
+
 import java.util.*;
 import java.io.*;
   
-public class Main {
+public class I0506 {
   public static void main(String[] args) throws IOException { 
     
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
