@@ -1,7 +1,9 @@
+package algorithm.inflearn.s6;
+
 import java.util.*;
 import java.io.*;
   
-public class Main {
+public class I0601 {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int T = Integer.parseInt(br.readLine());
@@ -13,21 +15,22 @@ public class Main {
       arr[i] = Integer.parseInt(st.nextToken());
     }
     
-    for(int i = 0; i<T; i++){
-      int min = arr[i];
+    for(int i = 0; i<T-1; i++){
+      int min = i;
       for(int j = i+1; j<T; j++){
-        int minPos = 0;
-        if(min > arr[j]){
-		  min = arr[j];
-          minPos = j;
-        }
-        int tmp = arr[minPos];
-        arr[minPos] = arr[i];
-        arr[i] = tmp;
+        if(arr[min] > arr[j]){
+		  min = j;
+        } 
       }
+      int tmp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = tmp;
+      
       if(i>0) sb.append(" ");
       sb.append(arr[i]);
     }
+    
+    sb.append(" ").append(arr[T-1]);
     
     System.out.println(sb);
   }
