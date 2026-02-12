@@ -14,7 +14,7 @@ class Point implements Comparable<Point> {
   }
 }
 
-public class I0606_2 {
+public class I0607_2 {
   public static void main(String[] args) throws IOException {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringBuilder sb = new StringBuilder();
