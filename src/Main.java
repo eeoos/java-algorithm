@@ -3,47 +3,32 @@ import java.io.*;
   
 public class Main {
   public static void main(String[] args) throws IOException {
-    
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st = new StringTokenizer(br.readLine());
-    StringBuilder sb = new StringBuilder();
-    
-    int T = Integer.parseInt(st.nextToken());
-    int n = Integer.parseInt(st.nextToken());
+    int T= Integer.parseInt(st.nextToken());
+    int target = Integer.parseInt(st.nextToken());
     
     int[] arr = new int[T];
-    
     st = new StringTokenizer(br.readLine());
-    for(int i = 0; i<n; i++){
-      int in = Integer.parseInt(st.nextToken());
-      int pos = -1;
-      for(int j = 0; j<T; j++)
-        if(arr[j] == in)  pos= j;
-      
-      int j = T-1;
-      if(pos==-1){
-        while(j>0){
-          arr[j] = arr[j-1];
-          j--;
-        }
-        arr[j] = in;
-      }else{
-        j = pos;
-        while(j>0){
-          arr[j] = arr[j-1];
-          j--;
-        }
-        arr[j] = in;
-      }
-      
-    }
-    
     for(int i = 0; i<T; i++){
-      if(i>0) sb.append(" ");
-      sb.append(arr[i]);
+      arr[i] = Integer.parseInt(st.nextToken());
     }
     
-    System.out.println(sb);
+    Arrays.sort(arr);
+	binarySearch(arr, 0, T-1, target);
     
-  }   
+  }
+  
+  static void binarySearch(int[] arr, int start, int end, int target){
+    if(start == end) {
+      if(target == arr[start]) System.out.println(start);
+      return;
+    }
+    
+    int middle= (start + end) /2;
+    if(target == arr[middle]) System.out.println(middle);
+    else if(target < arr[middle] && (middle-1) >= start) binarySearch(arr, start, middle-1, target);
+    else if(target > arr[middle] && (middle+1) <= end) binarySearch(arr, middle+1, end, target);
+  }
 }
