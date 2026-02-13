@@ -3,32 +3,43 @@ import java.io.*;
   
 public class Main {
   public static void main(String[] args) throws IOException {
-	
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int T= Integer.parseInt(st.nextToken());
-    int target = Integer.parseInt(st.nextToken());
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st= new StringTokenizer(br.readLine());
     
-    int[] arr = new int[T];
+    int n = Integer.parseInt(st.nextToken());
+    int m = Integer.parseInt(st.nextToken());
+    int[] arr = new int[n];
+    
+    int sum = 0;
     st = new StringTokenizer(br.readLine());
-    for(int i = 0; i<T; i++){
+    for(int i = 0; i<n; i++){
       arr[i] = Integer.parseInt(st.nextToken());
+      sum += arr[i];
     }
     
-    Arrays.sort(arr);
-	binarySearch(arr, 0, T-1, target);
     
+    int rt= sum;
+    int lt = Arrays.stream(arr).max().getAsInt();
+    int result = binarySearch(arr, lt, rt, m);
+    
+    System.out.println(result);
+  }
+  static int binarySearch(int[] arr, int begin, int end, int m){
+    if(begin > end) return begin;
+    
+    int mid = (begin + end)/ 2;
+    if(count(arr, mid) <= m) return binarySearch(arr, begin, mid-1, m);
+    else return binarySearch(arr, mid+1, end, m);
   }
   
-  static void binarySearch(int[] arr, int start, int end, int target){
-    if(start == end) {
-      if(target == arr[start]) System.out.println(start);
-      return;
+  static int count(int[] arr, int capacity){
+    int cnt = 1, sum = 0;
+    for(int a: arr){
+      if(sum + a > capacity){
+        cnt++;
+        sum = a;
+      }else sum+=a;
     }
-    
-    int middle= (start + end) /2;
-    if(target == arr[middle]) System.out.println(middle);
-    else if(target < arr[middle] && (middle-1) >= start) binarySearch(arr, start, middle-1, target);
-    else if(target > arr[middle] && (middle+1) <= end) binarySearch(arr, middle+1, end, target);
+    return cnt;
   }
 }
