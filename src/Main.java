@@ -1,45 +1,46 @@
-import java.util.*;
-import java.io.*;
-  
 public class Main {
-  public static void main(String[] args) throws IOException {
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st= new StringTokenizer(br.readLine());
-    
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
-    int[] arr = new int[n];
-    
-    int sum = 0;
-    st = new StringTokenizer(br.readLine());
-    for(int i = 0; i<n; i++){
-      arr[i] = Integer.parseInt(st.nextToken());
-      sum += arr[i];
-    }
-    
-    
-    int rt= sum;
-    int lt = Arrays.stream(arr).max().getAsInt();
-    int result = binarySearch(arr, lt, rt, m);
-    
-    System.out.println(result);
+  
+  static class Node {
+    int data;
+    Node lt, rt;
+    public Node(int data) {this.data=data;}
   }
-  static int binarySearch(int[] arr, int begin, int end, int m){
-    if(begin > end) return begin;
     
-    int mid = (begin + end)/ 2;
-    if(count(arr, mid) <= m) return binarySearch(arr, begin, mid-1, m);
-    else return binarySearch(arr, mid+1, end, m);
+  public static void main(String[] args){
+    Node root = new Node(1);
+    root.lt = new Node(2);
+    root.lt.lt = new Node(4);
+    root.lt.rt = new Node(5);
+    root.rt = new Node(3);
+    root.rt.lt = new Node(6);
+    root.rt.rt = new Node(7);
+    
+    preorder(root);
+    System.out.println();
+    inorder(root);
+    System.out.println();
+    postorder(root);
   }
   
-  static int count(int[] arr, int capacity){
-    int cnt = 1, sum = 0;
-    for(int a: arr){
-      if(sum + a > capacity){
-        cnt++;
-        sum = a;
-      }else sum+=a;
-    }
-    return cnt;
+  static void inorder(Node root){
+    if(root == null) return;
+    
+    inorder(root.lt);
+    System.out.print(root.data + " ");
+    inorder(root.rt);
+  }
+  
+  static void postorder(Node root) {
+	  if(root == null) return;
+	  postorder(root.lt);
+	  postorder(root.rt);
+	  System.out.print(root.data + " ");
+  }
+  
+  static void preorder(Node root) {
+	  if(root == null) return;
+	  System.out.print(root.data + " ");
+	  preorder(root.lt);
+	  preorder(root.rt);
   }
 }
