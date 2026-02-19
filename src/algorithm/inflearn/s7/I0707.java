@@ -1,52 +1,44 @@
 package algorithm.inflearn.s7;
 
 import java.util.*;
-import java.io.*;
-  
+
 public class I0707 {
-  public static void main(String[] args) throws IOException {
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    
-    int s = Integer.parseInt(st.nextToken());
-    int e = Integer.parseInt(st.nextToken());
-    
-    BFS(s, e);
-  }
-  
-  static void BFS(int s, int e){
-    boolean[] visited = new boolean[10001];
-    Deque<Integer> dq = new ArrayDeque<>();
-    
-    visited[s] = true;
-    dq.offer(s);
-    int L = 0;
-    while(!dq.isEmpty()){
-      int len = dq.size();
-      for(int i = 0; i<len; i++){
-        int cur = dq.poll();
-        
-        if(cur == e){
-          System.out.println(L);
-          return;
-        }
-        int a= cur-1;
-        int b = cur+1;
-        int c = cur+5;
-        if(!(a<1 || a>10000) && !visited[a]) {
-          visited[a] = true;
-          dq.offer(a);
-        }
-        if(!(b<1 || b>10000) && !visited[b]) {
-          visited[b] = true;
-          dq.offer(b);
-        }
-        if(!(c<1 || c>10000) && !visited[c]) {
-          visited[c] = true;
-          dq.offer(c);
-        }
-      }
-      L++;
-    }
-  }
+	static class Node {
+	    int data;
+	    Node lt, rt;
+	    public Node(int data) {this.data=data;}
+	  }
+	    
+	  public static void main(String[] args){
+	    Node root = new Node(1);
+	    root.lt = new Node(2);
+	    root.lt.lt = new Node(4);
+	    root.lt.rt = new Node(5);
+	    root.rt = new Node(3);
+	    root.rt.lt = new Node(6);
+	    root.rt.rt = new Node(7);
+	    
+	    BFS(root);
+	    
+	  }
+	  
+	  static void BFS(Node root) {
+		  Deque<Node> dq = new ArrayDeque<>();
+		  dq.offer(root);
+		  int L = 0;
+		  while(!dq.isEmpty()) {
+			  int len = dq.size();
+			  System.out.print(L + ": ");
+			  for(int i = 0; i<len; i++) {
+				  Node cur=  dq.poll();
+				  System.out.print(cur.data + " ");
+				  if(cur.lt!=null) dq.offer(cur.lt);
+				  if(cur.rt!=null) dq.offer(cur.rt);
+			  }
+			  
+			  L++;
+			  System.out.println();
+		  }
+	  }
+	
 }
