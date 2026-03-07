@@ -4,26 +4,43 @@ import java.util.*;
 import java.io.*;
   
 public class I0903 {
-  
+  static class Time {
+    public int t;
+    public char s;
+    Time(int t, char s) {
+      this.t = t;
+      this.s = s;
+    }
+  }
+  static char[] c = {'s' ,'e'};
   public static void main(String[] args) throws IOException {
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     StringTokenizer st;
     int n = Integer.parseInt(br.readLine());
-    
-    int[] arr = new int[72 + 1];
-
+    List<Time> list = new ArrayList<>();
     for(int i = 0; i<n; i++){
       st = new StringTokenizer(br.readLine());
-      int s = Integer.parseInt(st.nextToken());
-      int e = Integer.parseInt(st.nextToken());
-      
-      for(int j = s; j<e; j++) {
-    	arr[j]++;
+      for(int j = 0; j<2; j++){
+        int t= Integer.parseInt(st.nextToken());
+        list.add(new Time(t, c[j]));
       }
     }
     
-    int result = Arrays.stream(arr).max().getAsInt();  
+    list.sort((t1, t2) -> {
+      if(t1.t == t2.t) return t1.s - t2.s;
+      return t1.t - t2.t;
+    });
     
+    int cnt= 0;
+    int result = 0;
+    for(Time t : list){
+      if(t.s == 's') {
+        cnt++;
+        result = Math.max(result, cnt);
+      }else {
+        cnt--;
+      }
+    }
     
     System.out.println(result);
   }
