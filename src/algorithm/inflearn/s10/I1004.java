@@ -35,7 +35,7 @@ public class I1004 {
     Arrays.sort(arr);
     
     dy[0] = arr[0].h;
-    int result = 0;
+    int result = dy[0];
     for(int i = 1; i<n; i++){
       int max = 0;
       for(int j = i-1; j>=0; j--){
