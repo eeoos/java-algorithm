@@ -1,3 +1,23 @@
-bin/
+# Java compiled files
 *.class
+
+# Logs
 *.log
+
+# macOS
+.DS_Store
+
+# Vim swap files
+*.swp
+*.swo
+
+# IntelliJ / Eclipse
+.idea/
+.project
+.classpath
+.settings/
+
+# build folders
+bin/
+out/
+build/
