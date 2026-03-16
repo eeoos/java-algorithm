@@ -18,11 +18,21 @@ public class RemoveConsecutiveNumber {
         return answer.stream().mapToInt(i->i).toArray();
     }
 	
-	
+	public int[] solution2(int []arr) {
+		Deque<Integer> dq = new ArrayDeque<>();
+        
+        for(int x : arr) {
+        	if(dq.size() == 0 || dq.getLast() != x) dq.offer(x);
+        }
+
+        return dq.stream().mapToInt(i->i).toArray();
+    }
 	
 	public static void main(String[] args) {
 		RemoveConsecutiveNumber T = new RemoveConsecutiveNumber();
 		System.out.println(Arrays.toString(T.solution(new int[] {1,1,3,3,0,1,1})));
 		System.out.println(Arrays.toString(T.solution(new int[] {4,4,4,3,3})));
+		System.out.println(Arrays.toString(T.solution2(new int[] {1,1,3,3,0,1,1})));
+		System.out.println(Arrays.toString(T.solution2(new int[] {4,4,4,3,3})));
 	}
 }
