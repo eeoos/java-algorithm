@@ -22,5 +22,7 @@ public class I0204 {
       sb.append(arr[i]);
     }	
     System.out.println(sb);
+    
+    
   }
 }
