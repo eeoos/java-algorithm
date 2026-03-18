@@ -20,6 +20,7 @@ public class I0212 {
     
     I0212 T = new I0212();
     System.out.println(T.solution(n, m, arr));
+    System.out.println(T.solution2(n, m, arr));
     
   }
   public int solution(int n, int m, int[][] arr){
@@ -44,5 +45,26 @@ public class I0212 {
 	    return answer;
 	  }
   
-  
+  public int solution2(int n, int m, int[][] arr){
+    int[][] rank = new int[m][n];
+    for(int i =0; i<m; i++){
+      for(int j = 0; j<n; j++){
+        int index = arr[i][j] - 1;
+        rank[i][index] = j;
+      }
+    }
+    
+    int answer = 0;
+ 	for(int i =0; i<n; i++){
+      for(int j = 0; j<n; j++){
+    	if(i == j) continue;
+        int cnt= 0;
+        for(int k = 0; k<m; k++){
+          if(rank[k][i] < rank[k][j]) cnt++;
+        }
+        if(cnt == m) answer++;
+      }
+    }  
+    return answer;
+  }
 }
