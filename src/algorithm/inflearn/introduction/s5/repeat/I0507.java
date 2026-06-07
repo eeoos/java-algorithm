@@ -34,7 +34,7 @@ public class I0507 {
 	public String solution2(String t, String s) {
 		
 		StringBuilder sb = new StringBuilder();
-		for(char c : t.toCharArray()) {
+		for(char c : s.toCharArray()) {
 			if(t.indexOf(c) != -1) sb.append(c);
 		}
 		
