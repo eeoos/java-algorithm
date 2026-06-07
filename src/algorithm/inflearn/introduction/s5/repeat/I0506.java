@@ -24,17 +24,11 @@ public class I0506 {
 		while(dq.size() > 1) {
 			
 			int front = dq.poll();
-			System.out.println(front + " " + cnt);
-			if(cnt==k) {
-				System.out.println(front + "상황발");
-				cnt = 1;
-			}
+			if(cnt==k) cnt = 1;
 			else {
 				dq.offer(front);
-				cnt++;
-				
+				cnt++;	
 			}
-			System.out.println(front + " " + cnt);
 		}
 		
 		return dq.poll();
